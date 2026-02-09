@@ -1,42 +1,136 @@
-<div style="margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#0a0a23 0%,#1a237e 50%,#0d47a1 100%);color:#fff;min-height:100vh;overflow:hidden;">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космос: Бесконечная Тайна</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .hero {
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 4rem;
+            margin: 0 0 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px #00d4ff; }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 30px #00d4ff, 0 0 40px #00d4ff; }
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            margin: 0 0 40px;
+            opacity: 0.9;
+        }
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            line-height: 1.8;
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #00d4ff;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🌌 Космос</h1>
+            <p class="subtitle">Бесконечная тайна Вселенной ждет тебя</p>
+        </div>
+    </section>
 
-<div style="height:100vh;background-image:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-4.0.3&fit=crop&w=2070&q=80');background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;">
-  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);"></div>
-  <div style="position:relative;z-index:2;max-width:900px;padding:0 30px;">
-    <h1 style="font-size:4.5rem;margin:0 0 25px;font-weight:700;text-shadow:3px 3px 6px rgba(0,0,0,0.9);color:#fff;background:linear-gradient(45deg,#00d4ff,#ff6b6b);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:glow 3s ease-in-out infinite alternate;">🌌 Космос</h1>
-    <p style="font-size:1.8rem;margin:0 0 50px;opacity:0.95;line-height:1.4;">Бесконечная тайна Вселенной манит тебя в путешествие</p>
-  </div>
-</div>
+    <section class="content">
+        <h2>Открываем тайны Вселенной</h2>
+        <p>Космос — это не просто пустота между звездами. Это грандиозный океан, полный чудес: от пылающих галактик до черных дыр, поглощающих свет. Представь: наша Земля — лишь песчинка в бесконечности, а Млечный Путь — одна из миллиардов галактик.</p>
+        
+        <h2>Путешествие к звездам</h2>
+        <p>Каждая звезда — это солнце, подобное нашему, с планетами, возможно, населёнными жизнью. Телескопы вроде "Джеймса Уэбба" раскрывают нам картины Большого Взрыва, случившегося 13,8 миллиарда лет назад. Космос шепчет секреты: тёмная материя, многомерные миры, параллельные реальности.</p>
+        
+        <h2>Твое место во Вселенной</h2>
+        <p>Смотри в ночное небо — ты часть этой симфонии. Космос вдохновляет мечтателей, ученых и художников. Может, следующий прорыв сделаешь ты? 🌟</p>
+    </section>
 
-<div style="max-width:1100px;margin:0 auto;padding:100px 40px;line-height:1.8;">
-  <h2 style="font-size:3rem;text-align:center;margin-bottom:50px;color:#00d4ff;text-shadow:0 2px 4px rgba(0,0,0,0.5);">✨ Открываем тайны</h2>
-  
-  <p style="font-size:1.25rem;margin-bottom:35px;text-align:justify;opacity:0.95;">Космос — это грандиозный океан чудес. Миллиарды галактик, черные дыры, поглощающие свет, и звезды, рождающиеся из космической пыли. Наша Земля — лишь пылинка в бесконечности, а Вселенная расширяется быстрее скорости света.</p>
-
-  <div style="background:rgba(255,255,255,0.05);border-radius:20px;padding:40px;margin:50px 0;border-left:5px solid #00d4ff;">
-    <h3 style="font-size:2rem;color:#ff6b6b;margin-top:0;">🚀 Факты о космосе</h3>
-    <ul style="font-size:1.15rem;padding-left:30px;">
-      <li>Возраст Вселенной: 13.8 миллиарда лет</li>
-      <li>Количество звезд в Млечном Пути: ~200 миллиардов</li>
-      <li>Скорость света: 300 000 км/с</li>
-      <li>Ближайшая звезда: Проксима Центавра (4.2 св. года)</li>
-    </ul>
-  </div>
-
-  <h2 style="font-size:3rem;text-align:center;margin:80px 0 50px;color:#ff6b6b;text-shadow:0 2px 4px rgba(0,0,0,0.5);">🌟 Твое место во Вселенной</h2>
-  
-  <p style="font-size:1.25rem;margin-bottom:35px;text-align:justify;opacity:0.95;">Каждую ночь небо рассказывает истории о рождении миров. Космос вдохновляет мечтателей, ученых и художников. Может, именно ты откроешь новую планету или разгадку темной материи? <strong>Взгляни вверх — Вселенная ждет!</strong></p>
-  
-  <div style="text-align:center;padding:40px;background:rgba(0,212,255,0.1);border-radius:25px;margin-top:60px;">
-    <p style="font-size:1.4rem;font-style:italic;color:#fff;">"Мы лишь капля в океане космоса, но каждая капля делает океан." — Карл Саган</p>
-  </div>
-</div>
-
-<style>
-@keyframes glow {
-  0% { filter: drop-shadow(0 0 10px #00d4ff); }
-  100% { filter: drop-shadow(0 0 25px #00d4ff) drop-shadow(0 0 35px #ff6b6b); }
-}
-</style>
-
-</div>
+    <script>
+        // Анимированные звезды
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>
