@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐶 Таксы — Самые Длинные Любимцы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+        .cta-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+        
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.1)),
+                        url('https://images.unsplash.com/photo-1581578731547-79b7e2f97a7c?ixlib=rb-4.0.3&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,107,107,0.8), rgba(255,167,38,0.6));
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+        h1 {
+            font-size: clamp(3.5rem, 9vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero-subtitle {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        /* Facts */
+        .facts {
+            padding: 120px 0;
+            background: rgba(255,255,255,0.8);
+        }
+        .section-title {
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
+            text-align: center;
+            margin-bottom: 80px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .fact-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.4s;
+            border-top: 5px solid transparent;
+        }
+        .fact-card:nth-child(1):hover { border-top-color: #ff6b6b; }
+        .fact-card:nth-child(2):hover { border-top-color: #ffa726; }
+        .fact-card:nth-child(3):hover { border-top-color: #4caf50; }
+        .fact-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        .fact-icon {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+        .fact-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+        
+        /* Breeds */
+        .breeds {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+        }
+        .breeds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .breed-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+        }
+        .breed-card:hover {
+            transform: translateY(-10px);
+        }
+        .breed-image {
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            padding: 60px 0 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .facts, .breeds { padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🐶 Таксы</div>
+            <ul class="nav-links">
+                <li><a href="#facts">Факты</a></li>
+                <li><a href="#breeds">Породы</a></li>
+                <li><a href="#care">Уход</a></li>
+            </ul>
+            <button class="cta-btn">🐾 Узнать больше</button>
+        </nav>
+    </header>
 
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🐶 Таксы</h1>
+            <p class="hero-subtitle">Длинные собачки с огромным сердцем</p>
+            <button class="cta-btn" style="padding: 20px 50px; font-size: 1.3rem;">💕 Любить таксу</button>
+            <p style="margin-top: 30px; font-size: 1.2rem; opacity: 0.9;">
+                Самая узнаваемая порода • 600+ лет истории • Идеальный компаньон
+            </p>
+        </div>
+    </section>
+
+    <!-- Facts -->
+    <section class="facts" id="facts">
+        <div class="container">
+            <h2 class="section-title">Интересные факты</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">🐭</div>
+                    <div class="fact-number">1600</div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Годов истории</h3>
+                    <p>Выводили в Германии для охоты на барсуков в песках</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">📏</div>
+                    <div class="fact-number">3 вида</div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px;">По размеру</h3>
+                    <p>Стандарт, карлик, кроличья — от 4 до 12 кг</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🎨</div>
+                    <div class="fact-number">3 цвета</div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px;">Шерсти</h3>
+                    <p>Короткая, жесткошерстная, длинношерстная</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breeds -->
+    <section class="breeds" id="breeds">
+        <div class="container">
+            <h2 class="section-title">Породы такс</h2>
+            <div class="breeds-grid">
+                <div class="breed-card">
+                    <div class="breed-image">🐶</div>
+                    <h3 style="padding: 25px 25px 0; font-size: 1.7rem;">Стандартная</h3>
+                    <p style="padding: 0 25px 25px; opacity: 0.9;">8-14 кг, 23-25 см в холке. Классическая охотничья собака.</p>
+                </div>
+                <div class="breed-card">
+                    <div class="breed-image">🐕</div>
+                    <h3 style="padding: 25px 25px 0; font-size: 1.7rem;">Карликовая</h3>
+                    <p style="padding: 0 25px 25px; opacity: 0.9;">4-8 кг, 15-21 см. Идеальна для квартиры.</p>
+                </div>
+                <div class="breed-card">
+                    <div class="breed-image">🐇</div>
+                    <h3 style="padding: 25px 25px 0; font-size: 1.7rem;">Кроличья</h3>
+                    <p style="padding: 0 25px 25px; opacity: 0.9;">Менее 4 кг. Самая миниатюрная из всех.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Хочешь таксу?</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 40px; opacity: 0.95;">Эти собачки покоряют с первого взгляда!</p>
+            <button class="cta-btn" style="padding: 22px 70px; font-size: 1.4rem;">🐾 Найти щенка</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="opacity: 0.8;">
+                © 2026 Таксы.ру • Санкт-Петербург • 
+                <span style="color: #ff6b6b;">💕 Любим такс с 1600 года</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.98)';
+            } else {
+                header.style.background = 'rgba(255,255,255,0.95)';
+            }
+        });
+
+        // Animate cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        });
+        document.querySelectorAll('.fact-card, .breed-card').forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
